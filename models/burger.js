@@ -1,10 +1,10 @@
-var burgerJS = require("../config/orm");
+var orm = require("../config/orm");
 
-orm.selectAll("burgers");
+// orm.selectAll("burgers");
 
-orm.insertOne("Hamburger" , false)
+// orm.insertOne("Hamburger" , false)
 
 //Not working / Need to fix later
-orm.updateOne("false", "cheeseburger")
+orm.updateOne("cheeseburger", false)
 
-module.exports = burgerJS;
+module.exports = orm;

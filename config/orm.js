@@ -15,9 +15,9 @@ var orm = {
             console.log(res);
         });
     },
-    updateOne: function(booleanValue, devouredUpdate){
-        var queryString = "UPDATE burgers SET ? WHERE ??"
-        connection.query(queryString, [booleanValue, devouredUpdate], function(err, res){
+    updateOne: function(burgerName, booleanValue){
+        var queryString = "UPDATE burgers SET devoured = ? WHERE burgerName = ? "
+        connection.query(queryString, [booleanValue, burgerName], function(err, res){
             if (err) throw err;
             console.log(res);
         });
