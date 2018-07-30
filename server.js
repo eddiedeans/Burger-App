@@ -1,10 +1,23 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var orm = require("./config/orm");
+var exphbs = require("express-handlebars");
+var routes = require("./controllers/burgers_controller");
 
-// orm.selectAll("burgers");
+var PORT = process.env.PORT || 3000;
+var app = express();
 
-// orm.insertOne("Hamburger" , false)
+app.use(express.static("public"));
 
-//Not working / Need to fix later
-// orm.updateOne("cheeseburger", true)
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.json());
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+app.use(routes);
+
+app.listen(PORT, function() {
+    console.log("Listening on port:", PORT);
+  });
+  
